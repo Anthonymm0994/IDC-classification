@@ -22,7 +22,7 @@ Images in this dataset are of size 50x50x3. Each file name follows this format, 
 ### Example of the images:
 
 <p align="center">
-  <img src="images/dataSetExample.png"/>
+  <img src="Images/dataSetExample.png"/>
   <br>
   <em>Image 1. Example of Images in Dataset</em>
 </p>
@@ -36,7 +36,7 @@ We processed and split our dataset based on their class (0 for no IDC present an
 - `Total Negative Patches:  198738`
 
 <p align="center">
-  <img src="images/Graph_RatioP2N_CNN.png"/>
+  <img src="Images/Graph_RatioP2N_CNN.png"/>
   <br>
   <em>Graph 1. Ratio of Negative to Positive Samples</em>
 </p>
@@ -53,7 +53,7 @@ Before we could train our network, some data preprocessing tasks had to occur.
 One of the initial observations of the data was that the number of positive samples was much lower than the number of negative samples, as shown in Graph 1. The imbalanced class distributions will lead to our model generalizing poorly. This problem is exacerbated if we have unrepresentative test/train splits. In order to combat the unbalanced class problem and increase the generalizability of our model, we used stratified k-fold validation over 80% of the data. The other 20% was saved for testing. By using stratified k-fold validation, we ensured that each validation fold had an even proportion of positive and negative samples.
 
 <p align="center">
-  <img src="images/Graph_RatioP2NManifold_CNN.png"/>
+  <img src="Images/Graph_RatioP2NManifold_CNN.png"/>
   <br>
   <em>Graph 2. Ratio of Negative to Positive Samples Five Folds</em>
 </p>
@@ -61,12 +61,12 @@ One of the initial observations of the data was that the number of positive samp
 The model was also improved by changing the color space of the input image. The RGB colorspace is a non-uniform colorspace, and it does not separate color from luminance like HSV or LUV do. The images are normalized and converted to the LUV colorspace as a result. LUV is perceptually linear and is therefore better for detecting color differences than RGB.
 
 <p align="center">
-  <img src="images/hsv.png" />
-  <img src="images/white.jpg" width = "50px" height="10"/>
-  <img src="images/ColorSpace_LUV.png" />
+  <img src="Images/hsv.png" />
+  <img src="Images/white.jpg" width = "50px" height="10"/>
+  <img src="Images/ColorSpace_LUV.png" />
   <br>
   <em>Image 2. Color Space Modification: HSV</em>
-  <img src="images/white.jpg" width = "25px" height="10"/>
+  <img src="Images/white.jpg" width = "25px" height="10"/>
   <em>Image 3. Color Space Modification: LUV</em>
 </p>
 
@@ -74,7 +74,7 @@ The model was also improved by changing the color space of the input image. The 
 After the data wrangling and preprocessing, the images were fed into a CNN with seven convolution layers, three max pooling layers, a hidden dense layer, and an output layer. We also incorporated dropout layers into our model to help prevent overfitting the data.
 
 <p align="center">
-  <img class="cen" src="images/CNNlayers.png" />
+  <img class="cen" src="Images/CNNlayers.png" />
   <br>
   <em>Image 4. Visualization of Graphics Layers</em>
 </p>
@@ -82,12 +82,12 @@ After the data wrangling and preprocessing, the images were fed into a CNN with 
 The resulting learning curve shows the average loss and accuracy of the five validation folds plotted against the training data over 30 epochs. The recall chart was omitted because both the training and validation recall followed a strong logarithmic curve.
 
 <p align="center">
-  <img src="images/acc_curve.png" />
-  <img src="images/white.jpg" width = "30" height="10"/>
-  <img src="images/losscurve.png"/>
+  <img src="Images/acc_curve.png" />
+  <img src="Images/white.jpg" width = "30" height="10"/>
+  <img src="Images/losscurve.png"/>
   <br>
   <em>Graph 3. Accuracy Curve Across 5 Validation Folds</em>
-  <img src="images/white.jpg" width = "30" height="10"/>
+  <img src="Images/white.jpg" width = "30" height="10"/>
   <em>Graph 4. Loss Curve Across 5 Validation Folds</em>
 </p>
 
@@ -98,7 +98,7 @@ From these charts, we can see that both the validation loss and validation accur
 There are several things that could be implemented that might result in an increase in recall or accuracy. First, we could randomly oversample the positive samples. Since the model prioritizes recall over accuracy, it is more important that a positive sample is labeled as positive than that the model predicts both classes equally. With more positive image samples in each of the validation folds, it is more likely a positive image is label correctly.
 
 <p align="center">
-  <img src="images/confusion-matrix.png" width="400"/>
+  <img src="Images/confusion-matrix.png" width="400"/>
   <br>
   <em>Graph 5. Confusion Matrix</em>
 </p>
@@ -117,7 +117,7 @@ In addition to the convolutional neural net, we ran other supervised learning mo
 First, we split the dataset into a training and testing set with an 80-20 split respectively. With such a large dataset size, we wanted to observe what would happen to our results and processing time if we ran PCA on the data. By running PCA on the data with a 95% variance, we would be able to reduce the number of features in our dataset while maintaining as much information as possible. Then, we normalized the data over the features. The variances can be visualized in graph 6.
 
 <p align="center">
-  <img src="images/scree.png" width ="450"/>
+  <img src="Images/scree.png" width ="450"/>
   <br>
   <em>Graph 6. Cumulative Explained Variance vs. Number of Components</em>
 </p>
@@ -138,7 +138,7 @@ The average accuracies and their standard deviations for our supervised learning
 - `LR: 0.688857 (0.013788)`
 
 <p align="center">
-  <img src="images/no-pca2.png" width ="400"/>
+  <img src="Images/no-pca2.png" width ="400"/>
   <br>
   <em>Graph 7. Comparison of Five Methods without PCA</em>
 </p>
@@ -151,7 +151,7 @@ The average accuracies and their standard deviations for our supervised learning
 - `LR: 0.687286 (0.016592)`
 
 <p align="center">
-  <img src="images/with-pca2.png" width ="400"/>
+  <img src="Images/with-pca2.png" width ="400"/>
   <br>
   <em>Graph 8. Comparison of Five Methods with PCA</em>
 </p>
